@@ -44,10 +44,10 @@ BOOL CRoomMngApp::InitInstance()
 	try//连接数据库
 	{
 		CString strConnect;
-		strConnect.Format(L"DSN=myhotel;");
+		strConnect.Format("DSN=myhotel;");
 		if(!m_DB.OpenEx(strConnect, CDatabase::useCursorLib))
 		{
-			AfxMessageBox(L"Unable to Connect to the Specified Data Source");
+			AfxMessageBox("Unable to Connect to the Specified Data Source");
 			return FALSE ;
 		}
 	}
@@ -76,7 +76,7 @@ BOOL CRoomMngApp::InitInstance()
 	CoInitialize(NULL);
 	if (!AfxOleInit())
 	{
-		AfxMessageBox(L"OLE初始化出错!");
+		AfxMessageBox("OLE初始化出错!");
 		return FALSE;
 	}
 	m_pConnection.CreateInstance(__uuidof(Connection));
@@ -92,7 +92,7 @@ BOOL CRoomMngApp::InitInstance()
 	catch(_com_error e)//抛出可能发生的异常
 	{
 		CString errormessage;
-		errormessage.Format(L"连接数据库失败！\r\n错误信息:%s",e.ErrorMessage());
+		errormessage.Format("连接数据库失败！\r\n错误信息:%s",e.ErrorMessage());
 		AfxMessageBox(errormessage);
 		//AfxMessageBox("数据库连接失败，确认数据库配置正确!");
 		return FALSE;

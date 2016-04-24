@@ -6,6 +6,7 @@
 #include "RoomMng.h"
 #include "RoomMngDlg.h"
 #include "afxdialogex.h"
+#include "LoginDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -70,8 +71,11 @@ END_MESSAGE_MAP()
 
 BOOL CRoomMngDlg::OnInitDialog()
 {
-	CDialogEx::OnInitDialog();
+	LoginDlg dlg;
 
+	if(IDOK==dlg.DoModal())
+	{
+	CDialogEx::OnInitDialog();
 	// Add "About..." menu item to system menu.
 
 	// IDM_ABOUTBOX must be in the system command range.
@@ -100,6 +104,9 @@ BOOL CRoomMngDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
+	}
+	else 
+		exit(0);
 }
 
 void CRoomMngDlg::OnSysCommand(UINT nID, LPARAM lParam)
