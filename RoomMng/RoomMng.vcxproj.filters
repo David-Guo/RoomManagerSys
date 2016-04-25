@@ -71,5 +71,17 @@
     <Image Include="res\RoomMng.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\MING.BMP">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\FACE.BMP">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
