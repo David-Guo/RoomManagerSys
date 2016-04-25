@@ -21,12 +21,7 @@ public:
 	void enable(bool bEnabled);
 
 	CString	regnumber;
-	CString	gustname;
-	CString	gustaddr;
-	
-	CString	zhengjian;
-	CString	zhengjian_number;
-	CString	checkinreg_reason;
+	double roommoney;
 
 	bool issave;
 	// 定义ADO连接、命令、记录集变量指针
@@ -63,4 +58,9 @@ public:
 	CString m_showuser;
 
 	
+	virtual void OnOK();
+	afx_msg void OnBnClickedcheckreg();
+	afx_msg void OnCbnSelchangeComboroomnumber();
+	afx_msg void OnEnChangeEditdiscount();
+	afx_msg void OnEnChangeEditbookdays();
 };

@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include "LoginDlg.h"
 #include "CheckinDlg.h"
+#include "Setroomdlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -67,6 +68,8 @@ BEGIN_MESSAGE_MAP(CRoomMngDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_COMMAND(ID_MENU_checkin, &CRoomMngDlg::OnMenucheckin)
+	ON_COMMAND(ID_MENU_roomsetting, &CRoomMngDlg::OnMenuroomsetting)
+	ON_BN_CLICKED(IDC_BTN_borrowroom, &CRoomMngDlg::OnBnClickedBtnborrowroom)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -168,4 +171,19 @@ void CRoomMngDlg::OnMenucheckin()
 	// TODO: Add your command handler code here
 	CheckinDlg mycheckindlg;
 	mycheckindlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnMenuroomsetting()
+{
+	// TODO: Add your command handler code here
+	CSetroomdlg mysetroomdlg;
+	mysetroomdlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnBnClickedBtnborrowroom()
+{
+	// TODO: Add your control notification handler code here
+	OnMenucheckin();
 }

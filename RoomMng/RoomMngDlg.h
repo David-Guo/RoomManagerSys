@@ -31,4 +31,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnMenucheckin();
+	afx_msg void OnMenuroomsetting();
+	afx_msg void OnBnClickedBtnborrowroom();
 };
