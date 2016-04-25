@@ -103,8 +103,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CheckinDlg.h" />
+    <ClInclude Include="CheckinSet.h" />
     <ClInclude Include="LoginDlg.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RoominfoSet.h" />
     <ClInclude Include="RoomMng.h" />
     <ClInclude Include="RoomMngDlg.h" />
     <ClInclude Include="stdafx.h" />
@@ -112,7 +115,10 @@
     <ClInclude Include="Userset.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CheckinDlg.cpp" />
+    <ClCompile Include="CheckinSet.cpp" />
     <ClCompile Include="LoginDlg.cpp" />
+    <ClCompile Include="RoominfoSet.cpp" />
     <ClCompile Include="RoomMng.cpp" />
     <ClCompile Include="RoomMngDlg.cpp" />
     <ClCompile Include="stdafx.cpp">

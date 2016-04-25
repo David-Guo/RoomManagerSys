@@ -44,7 +44,7 @@ BOOL CRoomMngApp::InitInstance()
 	try//连接数据库
 	{
 		CString strConnect;
-		strConnect.Format("DSN=myhotel;");
+		strConnect.Format("DSN=roomMng;");
 		if(!m_DB.OpenEx(strConnect, CDatabase::useCursorLib))
 		{
 			AfxMessageBox("Unable to Connect to the Specified Data Source");
@@ -86,7 +86,7 @@ BOOL CRoomMngApp::InitInstance()
 	try                 
 	{	//Provider=DAVID-PC\SQLEXPRESS;Persist Security Info=False;Data Source=myhotel
 		// 打开本地数据库Data Source=DAVID-PC\SQLEXPRESS;Initial Catalog=myhotel;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False
-		m_pConnection->Open("DAVID-PC\SQLEXPRESS;Persist Security=False;Data Source=myhotel","","",adModeUnknown);
+		m_pConnection->Open("DAVID-PC\SQLEXPRESS;Persist Security=False;Data Source=roomMng","","",adModeUnknown);
 
 	}
 	catch(_com_error e)//抛出可能发生的异常

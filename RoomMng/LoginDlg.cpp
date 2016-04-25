@@ -6,6 +6,7 @@
 #include "LoginDlg.h"
 #include "afxdialogex.h"
 
+extern CString loguserid;
 /////////////////////////////////////////////////////////////////////////////
 // LoginDlg dialog
 
@@ -26,7 +27,6 @@ void LoginDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO_username, m_usernamectr);
-	//  DDX_Control(pDX, IDC_password, m_password);
 	DDX_Text(pDX, IDC_password, m_password);
 	DDX_CBString(pDX, IDC_COMBO_username, m_username);
 }
@@ -67,7 +67,7 @@ void LoginDlg::OnBnClickedOk()
 		MessageBox("user表打开失败!","客房管理系统");
 		return;
 	}
-	//loguserid = m_username;//保存操作员ID，其他窗口要用
+	loguserid = m_username;//保存操作员ID，其他窗口要用
 
 	if(!myuserset.IsEOF())//关闭数据库连接
 	{
@@ -147,4 +147,37 @@ BOOL LoginDlg::OnInitDialog()
 //	UpdateData(false);
 	return TRUE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
+}
+
+
+BOOL LoginDlg::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: Add your specialized code here and/or call the base class
+		if(pMsg->message==WM_KEYDOWN&&pMsg->wParam==VK_RETURN)
+	{
+
+		DWORD def_id=GetDefID();
+		 if(def_id!=0)
+		 {
+			 //MSG消息的结构中的hwnd存储的是接收该消息的窗口句柄
+			 CWnd *wnd=FromHandle(pMsg->hwnd);
+				 char class_name[16];
+			 if(GetClassName(wnd->GetSafeHwnd(),class_name,sizeof(class_name))!=0)
+			 {
+				 DWORD style=::GetWindowLong(pMsg->hwnd,GWL_STYLE);
+				 if((style&ES_MULTILINE)==0)
+				 {
+					 if(_strnicmp(class_name,"edit",5)==0)
+					 {   //将焦点设置到默认按钮上面
+						 GetDlgItem(LOWORD(def_id))->SetFocus();
+                         pMsg->wParam=VK_TAB;//重载回车键盘消息为table键盘消息，ok！2006.4.18
+						
+					 }
+				 }
+
+			 }
+		 }
+        
+	}
+	return CDialog::PreTranslateMessage(pMsg);
 }

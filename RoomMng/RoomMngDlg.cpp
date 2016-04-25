@@ -7,11 +7,13 @@
 #include "RoomMngDlg.h"
 #include "afxdialogex.h"
 #include "LoginDlg.h"
+#include "CheckinDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+CString loguserid;
 extern CRoomMngApp theApp;
 /////////////////////////////////////////////////////////////////////////////
 // CAboutDlg dialog used for App About
@@ -64,6 +66,7 @@ BEGIN_MESSAGE_MAP(CRoomMngDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_COMMAND(ID_MENU_checkin, &CRoomMngDlg::OnMenucheckin)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -158,3 +161,11 @@ HCURSOR CRoomMngDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CRoomMngDlg::OnMenucheckin()
+{
+	// TODO: Add your command handler code here
+	CheckinDlg mycheckindlg;
+	mycheckindlg.DoModal();
+}

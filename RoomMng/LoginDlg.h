@@ -32,4 +32,5 @@ public:
 	CComboBox m_usernamectr;
 	CString m_password;
 	CString m_username;
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };
