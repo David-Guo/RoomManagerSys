@@ -99,7 +99,6 @@ BOOL CheckinDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 	enable(0);//
 	//更新输入框状态
-	int nYear,nDay,nMonth;
 	CString sYear,sDay,sMonth,stime;
 	CTime tTime;
 	tTime=tTime.GetCurrentTime(); 
@@ -199,8 +198,20 @@ void CheckinDlg::OnOK()
 		return ;
 	}
 	//////////////////////////////////////////////////////////////////////////
-	issave = true;
-	//OnCloseupCOMBOroomnumber() ;
+	// 更新房间状态为已有人入住
+	CString SQLstr;
+	SQLstr="SELECT * FROM roomsetting where 房间号='" ;
+	SQLstr+=m_roomnumber;
+	SQLstr+="'";
+	myroominfoset.Open(AFX_DB_USE_DEFAULT_TYPE,SQLstr);
+	myroominfoset.Edit();
+	myroominfoset.column4="入住";
+	myroominfoset.Update();
+	myroominfoset.Requery();
+	if(myroominfoset.IsOpen())
+	{//关闭数据表
+		myroominfoset.Close();
+	}
 
 	m_pRecordset.CreateInstance(__uuidof(Recordset));
 
@@ -262,6 +273,7 @@ void CheckinDlg::OnOK()
 		//_gcvt(atof(m_realmoney)*m_pre_discount/100, 4, strhand_money );
 		m_pRecordset->PutCollect("应收宿费", _variant_t(strhand_money));
 		m_pRecordset->PutCollect("押金", _variant_t(m_pre_handinmoney));
+		m_pRecordset->PutCollect("备注", _variant_t(m_beizhu));
 		m_pRecordset->PutCollect("客房负责人", _variant_t(m_showuser));
 
 		m_pRecordset->Update();
@@ -321,7 +333,12 @@ void CheckinDlg::OnBnClickedcheckreg()
 	}
 	strcheckinnumber+=strnowdate;
 	strcheckinnumber+="D";
-	strcheckinnumber+=(LPCSTR)_bstr_t(m_pRecordset->GetRecordCount() + 1);
+	int num = 0;
+	while (!m_pRecordset->adoEOF) {
+		num++;
+		m_pRecordset->MoveNext();
+	}
+	strcheckinnumber+=(LPCSTR)_bstr_t(num + 1);
 	//产生登记凭证号码
 	m_regnumber =strcheckinnumber;
 
@@ -383,10 +400,10 @@ void CheckinDlg::OnEnChangeEditdiscount()
 	CString need_room_money;
 
 	double fneed_room_money=0;//初始化
-	
-    fneed_room_money=m_pre_discount*roommoney*m_checkdays/100;
-    
-    m_realmoney.Format("%f", fneed_room_money);
+
+	fneed_room_money=m_pre_discount*roommoney*m_checkdays/100;
+
+	m_realmoney.Format("%f", fneed_room_money);
 	//更新显示
 	UpdateData(false);
 	// TODO:  Add your control notification handler code here
@@ -403,10 +420,10 @@ void CheckinDlg::OnEnChangeEditbookdays()
 	CString need_room_money;
 
 	double fneed_room_money=0;//初始化
-	
-    fneed_room_money=m_pre_discount*roommoney*m_checkdays/100;
-    
-    m_realmoney.Format("%f", fneed_room_money);
+
+	fneed_room_money=m_pre_discount*roommoney*m_checkdays/100;
+
+	m_realmoney.Format("%f", fneed_room_money);
 	//更新显示
 	UpdateData(false);
 	// TODO:  Add your control notification handler code here
