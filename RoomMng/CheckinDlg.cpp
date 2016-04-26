@@ -303,17 +303,21 @@ void CheckinDlg::OnBnClickedcheckreg()
 
 	CString strnowdate,strcheckinnumber;
 
-	int nYear,nDay,nMonth;
-	CString sYear,sDay,sMonth;
+	int nYear,nDay,nMonth,nHour,nSecond;
+	CString sYear,sDay,sMonth,sHour,sSecond;
 	CTime tTime;
 	tTime=tTime.GetCurrentTime(); //获取系统当前的时间
 	nYear=tTime.GetYear();//提取年份
 	nDay=tTime.GetDay();//提取月份
 	nMonth=tTime.GetMonth();//提取日
+	nHour=tTime.GetHour();
+	nSecond=tTime.GetMinute();
 	sYear.Format("%d",nYear);//转换为字符串
 	sDay.Format("%d",nDay);//转换为字符串
 	sMonth.Format("%d",nMonth);//转换为字符串，格式化时间
-	strnowdate.Format("%s-%s-%s",sYear,sMonth,sDay);
+	sHour.Format("%d", nHour);
+	sSecond.Format("%d", nSecond);
+	strnowdate.Format("%s-%s-%s-%s-%s-%s",sYear,sMonth,sDay,sHour,sSecond);
 
 
 	// 使用ADO创建数据库记录集
@@ -336,13 +340,13 @@ void CheckinDlg::OnBnClickedcheckreg()
 		AfxMessageBox(e->ErrorMessage());
 	}
 	strcheckinnumber+=strnowdate;
-	strcheckinnumber+="D";
-	int num = 0;
-	while (!m_pRecordset->adoEOF) {
-		num++;
-		m_pRecordset->MoveNext();
-	}
-	strcheckinnumber+=(LPCSTR)_bstr_t(num + 1);
+	//strcheckinnumber+="D";
+	//int num = 0;
+	//while (!m_pRecordset->adoEOF) {
+	//	num++;
+	//	m_pRecordset->MoveNext();
+	//}
+	//strcheckinnumber+=(LPCSTR)_bstr_t(num + 1);
 	//产生登记凭证号码
 	m_regnumber =strcheckinnumber;
 

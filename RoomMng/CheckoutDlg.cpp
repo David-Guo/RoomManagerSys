@@ -298,6 +298,31 @@ void CCheckoutDlg::OnOK()
 	// TODO: Add extra validation here
 	//store the record into the checkoutregtable
 	UpdateData(true);
+	// 从住宿登记表中删除 结账用户记录
+	m_pRecordset.CreateInstance(__uuidof(Recordset));
+	// 在ADO操作中建议语句中要常用try...catch()来捕获错误信息，
+	UpdateData(true);
+
+	CString checkoutnumber;
+	CString strsql;
+	strsql.Format("SELECT * FROM checkintable where 凭证号码='%s'",m_regnumber);
+	try// 打开数据库
+	{
+		m_pRecordset->Open(_variant_t(strsql),                // 查询 表中所有字段
+			theApp.m_pConnection.GetInterfacePtr(),	 // 获取库接库的IDispatch指针
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+		m_pRecordset->Delete(adAffectCurrent);
+	}
+	catch(_com_error *e)
+	{// 捕获可能发生的异常
+		AfxMessageBox(e->ErrorMessage());
+	}
+	m_pRecordset->Update();
+	m_pRecordset->Close();
+	m_pRecordset = NULL;
+
 	if(m_extramoney=="") {
 		MessageBox("请填写其他费用信息！", "客房管理系统");
 		return;
@@ -368,7 +393,7 @@ void CCheckoutDlg::OnOK()
 
 	mymendroominfoset.Edit();//设置数据库操作类型
 
-	mymendroominfoset.column4="空房";
+	mymendroominfoset.column4="空闲";
 	mymendroominfoset.Update();// 更新数据库
 	mymendroominfoset.Requery();
 	///////////////////////////////////

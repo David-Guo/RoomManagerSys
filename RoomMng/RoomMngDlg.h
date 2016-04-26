@@ -39,4 +39,8 @@ public:
 	afx_msg void OnMenuchechout();
 	afx_msg void OnBnClickedBtnreturnroom();
 	afx_msg void OnMenuquerycheckout();
+	afx_msg void OnMenuchangepwd();
+	afx_msg void OnMenuadduser();
+	afx_msg void OnMenusalereport();
+	afx_msg void OnBnClickedBtndaysummery();
 };

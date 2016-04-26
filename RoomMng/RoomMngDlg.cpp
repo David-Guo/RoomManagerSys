@@ -13,6 +13,9 @@
 #include "FindchechinDlg.h"
 #include "CheckoutDlg.h"
 #include "FindcheckoutDlg.h"
+#include "SetpasswordDlg.h"
+#include "AdduserDlg.h"
+#include "RoomsaleDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -82,6 +85,10 @@ BEGIN_MESSAGE_MAP(CRoomMngDlg, CDialogEx)
 	ON_COMMAND(ID_MENU_chechout, &CRoomMngDlg::OnMenuchechout)
 	ON_BN_CLICKED(IDC_BTN_returnroom, &CRoomMngDlg::OnBnClickedBtnreturnroom)
 	ON_COMMAND(ID_MENU_querycheckout, &CRoomMngDlg::OnMenuquerycheckout)
+	ON_COMMAND(ID_MENU_changepwd, &CRoomMngDlg::OnMenuchangepwd)
+	ON_COMMAND(ID_MENU_adduser, &CRoomMngDlg::OnMenuadduser)
+	ON_COMMAND(ID_MENU_salereport, &CRoomMngDlg::OnMenusalereport)
+	ON_BN_CLICKED(IDC_BTN_daysummery, &CRoomMngDlg::OnBnClickedBtndaysummery)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -244,4 +251,35 @@ void CRoomMngDlg::OnMenuquerycheckout()
 	// TODO: Add your command handler code here
 	CFindcheckoutDlg myfindcheckoutdlg;
 	myfindcheckoutdlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnMenuchangepwd()
+{
+	// TODO: Add your command handler code here
+	CSetpasswordDlg mysetpassworddlg;
+	mysetpassworddlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnMenuadduser()
+{
+	// TODO: Add your command handler code here
+	CAdduserDlg myadduserdlg;
+	myadduserdlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnMenusalereport()
+{
+	// TODO: Add your command handler code here
+	CRoomsaleDlg myroomsaledlg;
+	myroomsaledlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnBnClickedBtndaysummery()
+{
+	// TODO: Add your control notification handler code here
+	OnMenusalereport();
 }

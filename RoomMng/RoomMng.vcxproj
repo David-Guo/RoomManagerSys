@@ -103,6 +103,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdduserDlg.h" />
     <ClInclude Include="CheckinDlg.h" />
     <ClInclude Include="CheckinSet.h" />
     <ClInclude Include="CheckoutDlg.h" />
@@ -114,12 +115,15 @@
     <ClInclude Include="RoominfoSet.h" />
     <ClInclude Include="RoomMng.h" />
     <ClInclude Include="RoomMngDlg.h" />
+    <ClInclude Include="RoomsaleDlg.h" />
+    <ClInclude Include="SetpasswordDlg.h" />
     <ClInclude Include="Setroomdlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Userset.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdduserDlg.cpp" />
     <ClCompile Include="CheckinDlg.cpp" />
     <ClCompile Include="CheckinSet.cpp" />
     <ClCompile Include="CheckoutDlg.cpp" />
@@ -130,6 +134,8 @@
     <ClCompile Include="RoominfoSet.cpp" />
     <ClCompile Include="RoomMng.cpp" />
     <ClCompile Include="RoomMngDlg.cpp" />
+    <ClCompile Include="RoomsaleDlg.cpp" />
+    <ClCompile Include="SetpasswordDlg.cpp" />
     <ClCompile Include="Setroomdlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
