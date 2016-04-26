@@ -105,6 +105,7 @@
   <ItemGroup>
     <ClInclude Include="CheckinDlg.h" />
     <ClInclude Include="CheckinSet.h" />
+    <ClInclude Include="FindRoomDlg.h" />
     <ClInclude Include="LoginDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RoominfoSet.h" />
@@ -118,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="CheckinDlg.cpp" />
     <ClCompile Include="CheckinSet.cpp" />
+    <ClCompile Include="FindRoomDlg.cpp" />
     <ClCompile Include="LoginDlg.cpp" />
     <ClCompile Include="RoominfoSet.cpp" />
     <ClCompile Include="RoomMng.cpp" />

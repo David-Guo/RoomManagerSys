@@ -115,11 +115,11 @@ BOOL CSetroomdlg::OnInitDialog()
 	m_setroomdlg_list.GetWindowRect(&rect);
 	int wid=rect.right-rect.left;
 	int i=0;
-	m_setroomdlg_list.SetColumnWidth(0,wid/5);
-	m_setroomdlg_list.SetColumnWidth(1,wid/5);
-	m_setroomdlg_list.SetColumnWidth(2,wid/5);
-	m_setroomdlg_list.SetColumnWidth(3,wid/5);
-	m_setroomdlg_list.SetColumnWidth(4,wid/5);
+	m_setroomdlg_list.SetColumnWidth(0,wid/6);
+	m_setroomdlg_list.SetColumnWidth(1,wid/6);
+	m_setroomdlg_list.SetColumnWidth(2,wid/6);
+	m_setroomdlg_list.SetColumnWidth(3,wid/6);
+	m_setroomdlg_list.SetColumnWidth(4,wid/3);
 
 
 	//设置列表框风格

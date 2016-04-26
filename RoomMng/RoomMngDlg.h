@@ -33,4 +33,5 @@ public:
 	afx_msg void OnMenucheckin();
 	afx_msg void OnMenuroomsetting();
 	afx_msg void OnBnClickedBtnborrowroom();
+	afx_msg void OnMenufindroom();
 };

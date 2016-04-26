@@ -9,6 +9,7 @@
 #include "LoginDlg.h"
 #include "CheckinDlg.h"
 #include "Setroomdlg.h"
+#include "FindRoomDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -33,6 +34,8 @@ public:
 // Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnMenufindroom();
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
@@ -70,6 +73,7 @@ BEGIN_MESSAGE_MAP(CRoomMngDlg, CDialogEx)
 	ON_COMMAND(ID_MENU_checkin, &CRoomMngDlg::OnMenucheckin)
 	ON_COMMAND(ID_MENU_roomsetting, &CRoomMngDlg::OnMenuroomsetting)
 	ON_BN_CLICKED(IDC_BTN_borrowroom, &CRoomMngDlg::OnBnClickedBtnborrowroom)
+	ON_COMMAND(ID_MENU_findroom, &CRoomMngDlg::OnMenufindroom)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -77,10 +81,10 @@ END_MESSAGE_MAP()
 
 BOOL CRoomMngDlg::OnInitDialog()
 {
-	LoginDlg dlg;
+	//LoginDlg dlg;
 
-	if(IDOK==dlg.DoModal())
-	{
+	//if(IDOK==dlg.DoModal())
+	//{
 	CDialogEx::OnInitDialog();
 	// Add "About..." menu item to system menu.
 
@@ -110,9 +114,9 @@ BOOL CRoomMngDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
-	}
-	else 
-		exit(0);
+	//}
+	//else 
+	//	exit(0);
 }
 
 void CRoomMngDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -186,4 +190,12 @@ void CRoomMngDlg::OnBnClickedBtnborrowroom()
 {
 	// TODO: Add your control notification handler code here
 	OnMenucheckin();
+}
+
+
+void CRoomMngDlg::OnMenufindroom()
+{
+	// TODO: Add your command handler code here
+	CFindRoomDlg myfindroomdlg;
+	myfindroomdlg.DoModal();
 }

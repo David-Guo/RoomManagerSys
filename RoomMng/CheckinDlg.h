@@ -39,7 +39,6 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	CString m_discount_kind;
 	CString m_zhengjian_number;
 	CString m_beizhu;
 	CString m_gustname;

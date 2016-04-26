@@ -15,7 +15,6 @@ IMPLEMENT_DYNAMIC(CheckinDlg, CDialog)
 
 	CheckinDlg::CheckinDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CheckinDlg::IDD, pParent)
-	, m_discount_kind(_T(""))
 	, m_zhengjian_number(_T(""))
 	, m_beizhu(_T(""))
 	, m_gustname(_T(""))
@@ -41,7 +40,6 @@ CheckinDlg::~CheckinDlg()
 void CheckinDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	DDX_CBString(pDX, IDC_EDIT_discount, m_discount_kind);
 	DDX_Text(pDX, IDC_EDIT_custId, m_zhengjian_number);
 	DDX_Text(pDX, IDC_EDIT_log, m_beizhu);
 	DDX_Text(pDX, IDC_EDIT_name, m_gustname);
@@ -174,7 +172,16 @@ BOOL CheckinDlg::OnInitDialog()
 void CheckinDlg::OnOK()
 {
 	// TODO: Add your specialized code here and/or call the base class
-	// TODO: Add extra validation here
+	// TODO: 下面的变量是方便 debug 时使用的
+	//m_zhengjian_number = "123456789123456";
+	//m_gustname = "gdw";
+	//m_pre_discount = 100;
+	//m_room_money = "118";
+	//m_pre_handinmoney = "118";
+	//m_realmoney = "118";
+	//m_roomnumber = "001";
+	//m_checkdays = 1;
+	//m_roomlevel = "标准";
 	UpdateData(true);
 	//////////////////////////////////////////////////////////////////////////
 	/*
@@ -226,7 +233,7 @@ void CheckinDlg::OnOK()
 
 		//CString str_room_money;
 		//m_room_money.GetWindowText(str_room_money);
-		m_pRecordset->PutCollect("客房价格", _variant_t(m_room_money));//str_room_money));
+		m_pRecordset->PutCollect("房间价格", _variant_t(m_room_money));//str_room_money));
 
 		CString checkindate;//获取登记住宿日期
 		int nYear,nDay,nMonth;
@@ -238,7 +245,7 @@ void CheckinDlg::OnOK()
 		sDay.Format("%d",nDay);//转换为字符串
 		sMonth.Format("%d",nMonth);//转换为字符串
 		checkindate.Format("%s-%s-%s",sYear,sMonth,sDay);//格式化时间
-		m_pRecordset->PutCollect("入住日期",_variant_t(checkindate));
+		m_pRecordset->PutCollect("入住时间",_variant_t(checkindate));
 		//保存
 		m_pRecordset->PutCollect("住宿天数", _variant_t(m_checkdays));
 		//定义临时存储空间
@@ -251,12 +258,13 @@ void CheckinDlg::OnOK()
 		m_pRecordset->PutCollect("折扣",_variant_t(m_pre_discount));
 		// 定义临时存储空间
 		char strhand_money[50];
-		_gcvt_s(str_money, 50, atof(m_realmoney)*m_pre_discount/100, 4);
+		_gcvt_s(strhand_money, 50, atof(m_realmoney)*m_pre_discount/100, 4);
 		//_gcvt(atof(m_realmoney)*m_pre_discount/100, 4, strhand_money );
 		m_pRecordset->PutCollect("应收宿费", _variant_t(strhand_money));
 		m_pRecordset->PutCollect("押金", _variant_t(m_pre_handinmoney));
 		m_pRecordset->PutCollect("客房负责人", _variant_t(m_showuser));
 
+		m_pRecordset->Update();
 		MessageBox("登记成功!","客房管理系统");
 	}
 	catch(_com_error *e)//捕获写入数据库时候可能发生的异常情况
@@ -313,7 +321,7 @@ void CheckinDlg::OnBnClickedcheckreg()
 	}
 	strcheckinnumber+=strnowdate;
 	strcheckinnumber+="D";
-	strcheckinnumber+=(LPCSTR)_bstr_t(m_pRecordset->GetRecordCount());
+	strcheckinnumber+=(LPCSTR)_bstr_t(m_pRecordset->GetRecordCount() + 1);
 	//产生登记凭证号码
 	m_regnumber =strcheckinnumber;
 
