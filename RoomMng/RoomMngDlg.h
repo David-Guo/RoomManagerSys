@@ -34,4 +34,8 @@ public:
 	afx_msg void OnMenuroomsetting();
 	afx_msg void OnBnClickedBtnborrowroom();
 	afx_msg void OnMenufindroom();
+	afx_msg void OnMenuquerychekin();
+	afx_msg void OnBnClickedBtnmainfind();
+	afx_msg void OnMenuchechout();
+	afx_msg void OnBnClickedBtnreturnroom();
 };

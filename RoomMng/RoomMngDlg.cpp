@@ -10,6 +10,8 @@
 #include "CheckinDlg.h"
 #include "Setroomdlg.h"
 #include "FindRoomDlg.h"
+#include "FindchechinDlg.h"
+#include "CheckoutDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -74,6 +76,10 @@ BEGIN_MESSAGE_MAP(CRoomMngDlg, CDialogEx)
 	ON_COMMAND(ID_MENU_roomsetting, &CRoomMngDlg::OnMenuroomsetting)
 	ON_BN_CLICKED(IDC_BTN_borrowroom, &CRoomMngDlg::OnBnClickedBtnborrowroom)
 	ON_COMMAND(ID_MENU_findroom, &CRoomMngDlg::OnMenufindroom)
+	ON_COMMAND(ID_MENU_querychekin, &CRoomMngDlg::OnMenuquerychekin)
+	ON_BN_CLICKED(IDC_BTN_mainfind, &CRoomMngDlg::OnBnClickedBtnmainfind)
+	ON_COMMAND(ID_MENU_chechout, &CRoomMngDlg::OnMenuchechout)
+	ON_BN_CLICKED(IDC_BTN_returnroom, &CRoomMngDlg::OnBnClickedBtnreturnroom)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -198,4 +204,34 @@ void CRoomMngDlg::OnMenufindroom()
 	// TODO: Add your command handler code here
 	CFindRoomDlg myfindroomdlg;
 	myfindroomdlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnMenuquerychekin()
+{
+	// TODO: Add your command handler code here
+	CFindchechinDlg myfindcheckindlg;
+	myfindcheckindlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnBnClickedBtnmainfind()
+{
+	// TODO: Add your control notification handler code here
+	OnMenuquerychekin();
+}
+
+
+void CRoomMngDlg::OnMenuchechout()
+{
+	// TODO: Add your command handler code here
+	CCheckoutDlg mycheckoutdlg;
+	mycheckoutdlg.DoModal();
+}
+
+
+void CRoomMngDlg::OnBnClickedBtnreturnroom()
+{
+	// TODO: Add your control notification handler code here
+	OnMenuchechout();
 }

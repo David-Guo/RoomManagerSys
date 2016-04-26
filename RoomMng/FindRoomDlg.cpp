@@ -178,6 +178,11 @@ void CFindRoomDlg::OnOK()
 		MessageBox("请先选择房间号！否则操作非法！","客房管理系统");
 		return;
 	}
+	if(m_findroom_status=="" || m_findroom_roomlevel=="" || m_findroom_roommoney=="")
+	{
+		MessageBox("请点击列表栏选择房间，保证修改信息完整！", "客房管理系统");
+		return;
+	}
 
 	//INSERT INTO checkinregtable (凭证号码)VALUES('%s')
 	CString strsqlmend;

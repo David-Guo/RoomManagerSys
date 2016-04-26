@@ -197,6 +197,11 @@ void CheckinDlg::OnOK()
 			"身份证错误",MB_OK);
 		return ;
 	}
+	if(m_gustname=="")
+	{
+		MessageBox("请填写完整姓名信息！", "未填写姓名", MB_OK);
+		return;
+	}
 	//////////////////////////////////////////////////////////////////////////
 	// 更新房间状态为已有人入住
 	CString SQLstr;
@@ -287,8 +292,7 @@ void CheckinDlg::OnOK()
 	//关闭记录集
 	m_pRecordset->Close();
 	m_pRecordset = NULL;
-
-	//	CDialog::OnOK();
+	CDialog::OnOK();
 }
 
 
