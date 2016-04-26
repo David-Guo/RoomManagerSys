@@ -107,6 +107,7 @@
     <ClInclude Include="CheckinSet.h" />
     <ClInclude Include="CheckoutDlg.h" />
     <ClInclude Include="FindchechinDlg.h" />
+    <ClInclude Include="FindcheckoutDlg.h" />
     <ClInclude Include="FindRoomDlg.h" />
     <ClInclude Include="LoginDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -123,6 +124,7 @@
     <ClCompile Include="CheckinSet.cpp" />
     <ClCompile Include="CheckoutDlg.cpp" />
     <ClCompile Include="FindchechinDlg.cpp" />
+    <ClCompile Include="FindcheckoutDlg.cpp" />
     <ClCompile Include="FindRoomDlg.cpp" />
     <ClCompile Include="LoginDlg.cpp" />
     <ClCompile Include="RoominfoSet.cpp" />

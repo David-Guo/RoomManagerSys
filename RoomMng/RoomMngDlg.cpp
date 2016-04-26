@@ -12,6 +12,7 @@
 #include "FindRoomDlg.h"
 #include "FindchechinDlg.h"
 #include "CheckoutDlg.h"
+#include "FindcheckoutDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -80,6 +81,7 @@ BEGIN_MESSAGE_MAP(CRoomMngDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_mainfind, &CRoomMngDlg::OnBnClickedBtnmainfind)
 	ON_COMMAND(ID_MENU_chechout, &CRoomMngDlg::OnMenuchechout)
 	ON_BN_CLICKED(IDC_BTN_returnroom, &CRoomMngDlg::OnBnClickedBtnreturnroom)
+	ON_COMMAND(ID_MENU_querycheckout, &CRoomMngDlg::OnMenuquerycheckout)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -234,4 +236,12 @@ void CRoomMngDlg::OnBnClickedBtnreturnroom()
 {
 	// TODO: Add your control notification handler code here
 	OnMenuchechout();
+}
+
+
+void CRoomMngDlg::OnMenuquerycheckout()
+{
+	// TODO: Add your command handler code here
+	CFindcheckoutDlg myfindcheckoutdlg;
+	myfindcheckoutdlg.DoModal();
 }

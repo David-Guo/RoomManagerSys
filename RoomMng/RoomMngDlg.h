@@ -38,4 +38,5 @@ public:
 	afx_msg void OnBnClickedBtnmainfind();
 	afx_msg void OnMenuchechout();
 	afx_msg void OnBnClickedBtnreturnroom();
+	afx_msg void OnMenuquerycheckout();
 };

@@ -2,17 +2,17 @@
 #include "afxcmn.h"
 
 
-// CFindchechinDlg dialog
+// CFindcheckoutDlg dialog
 
-class CFindchechinDlg : public CDialog
+class CFindcheckoutDlg : public CDialog
 {
-	DECLARE_DYNAMIC(CFindchechinDlg)
+	DECLARE_DYNAMIC(CFindcheckoutDlg)
 
 public:
-	CFindchechinDlg(CWnd* pParent = NULL);   // standard constructor
-	virtual ~CFindchechinDlg();
+	CFindcheckoutDlg(CWnd* pParent = NULL);   // standard constructor
+	virtual ~CFindcheckoutDlg();
 
-	// 开始手动添加的代码
+	////////////////////////// 开始手动添加代码 ///////////////////////
 	// 定义ADO连接、命令、记录集变量指针
 	_ConnectionPtr	m_pConnection;
 	_CommandPtr		m_pCommand;
@@ -33,7 +33,7 @@ public:
 	CString m_checkindate;
 	CString m_showuser;
 	void showinList();
-	// 结束手动添加的代码
+	////////////////////////// 结束手动添加代码 ///////////////////////
 
 // Dialog Data
 	enum { IDD = IDD_DIg_findcheckin };
@@ -43,8 +43,9 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	CString m_findcheckin_name;
-	CListCtrl m_findcheckin_list;
+	CString m_findcheckout_name;
+	CListCtrl m_findcheckout_list;
 	virtual BOOL OnInitDialog();
 	virtual void OnOK();
+	
 };
