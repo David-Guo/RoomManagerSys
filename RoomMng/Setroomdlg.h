@@ -22,6 +22,7 @@ public:
 	_ConnectionPtr	m_pConnection;
 	_CommandPtr		m_pCommand;
 	_RecordsetPtr	m_pRecordset;
+    _RecordsetPtr	m_pRecordset1;
 
 	CString showroom_roomnumber;
 	CString showroom_roomlevel;

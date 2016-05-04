@@ -25,7 +25,7 @@ CFindcheckoutDlg::~CFindcheckoutDlg()
 void CFindcheckoutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_findcheckin_name, m_findcheckout_name);
+	DDX_Text(pDX, IDC_findcheckout_name, m_findcheckout_name);
 	DDX_Control(pDX, IDC_LIST1, m_findcheckout_list);
 }
 

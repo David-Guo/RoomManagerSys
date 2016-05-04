@@ -72,7 +72,25 @@ void CSetroomdlg::OnOK()
 		MessageBox("请填写完整房间信息！", "客房管理系统");
 		return;
 	}
-
+    m_pRecordset1.CreateInstance(__uuidof(Recordset));
+    CString strsql;
+	strsql.Format("SELECT * FROM roomsetting where 房间号='%s'",m_roomnumber);
+    try//打开数据库
+	{
+		m_pRecordset1->Open(_variant_t(strsql),                // 查询表中所有字段
+			theApp.m_pConnection.GetInterfacePtr(),	 // 获取库接库的IDispatch指针
+			adOpenDynamic,
+			adLockOptimistic,
+			adCmdText);
+	}
+	catch(_com_error *e)//捕获打开数据库时候可能发生的异常情况
+	{
+		AfxMessageBox(e->ErrorMessage());
+	}
+    if (!m_pRecordset1->adoEOF) {
+        MessageBox("此房间号已存在！", "客房管理系统");
+        return;
+    }
 	try
 	{
 		// 写入各字段值

@@ -36,7 +36,7 @@ public:
 	////////////////////////// 结束手动添加代码 ///////////////////////
 
 // Dialog Data
-	enum { IDD = IDD_DIg_findcheckin };
+	enum { IDD = IDD_DIg_findcheckout };
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support

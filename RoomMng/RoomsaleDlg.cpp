@@ -255,5 +255,5 @@ void CRoomsaleDlg::showinList(int i) {
 	m_roomsale_list.SetItemText(i,7,m_totalPay.GetBuffer(50));
 
 	m_extraSum += atof(m_extramoney);
-	m_totalSum = m_totalSum + m_extraSum + atof(m_totalPay);
+	m_totalSum = m_totalSum  + atof(m_totalPay);
 }

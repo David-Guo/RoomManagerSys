@@ -317,7 +317,9 @@ void CheckinDlg::OnBnClickedcheckreg()
 	sMonth.Format("%d",nMonth);//转换为字符串，格式化时间
 	sHour.Format("%d", nHour);
 	sSecond.Format("%d", nSecond);
-	strnowdate.Format("%s-%s-%s-%s-%s-%s",sYear,sMonth,sDay,sHour,sSecond);
+	strnowdate.Format("%s-%s-%s",sYear,sMonth,sDay);
+	CString dateNum;
+	dateNum.Format("%s-%s-%s-%s-%s",sYear,sMonth,sDay,sHour,sSecond);
 
 
 	// 使用ADO创建数据库记录集
@@ -339,7 +341,7 @@ void CheckinDlg::OnBnClickedcheckreg()
 	{
 		AfxMessageBox(e->ErrorMessage());
 	}
-	strcheckinnumber+=strnowdate;
+	strcheckinnumber+=dateNum;
 	//strcheckinnumber+="D";
 	//int num = 0;
 	//while (!m_pRecordset->adoEOF) {
