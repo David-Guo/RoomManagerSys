@@ -168,16 +168,16 @@ void CRoomsaleDlg::OnOK()
 				m_checkoutdate = (LPCSTR)_bstr_t(var);
 			CString outyear,outmonth,outday;
 			outyear=m_checkoutdate.Mid(0,4);
-			outmonth=m_checkoutdate.Mid(5,m_checkoutdate.Find('-',6)-5);
-			outday=m_checkoutdate.Mid(m_checkoutdate.ReverseFind('-')+1,m_checkoutdate.GetLength()-m_checkoutdate.ReverseFind('-'));
+			outmonth=m_checkoutdate.Mid(5,m_checkoutdate.Find('/',6)-5);
+			outday=m_checkoutdate.Mid(m_checkoutdate.ReverseFind('/')+1,m_checkoutdate.GetLength()-m_checkoutdate.ReverseFind('-'));
 			//构造时间对象
-			CTime outtime(atoi(outyear),atoi(outmonth),atoi(outday));
+			CTime outtime(atoi(outyear),atoi(outmonth),atoi(outday), 0, 0, 0);
 			//构造时间对象
-			CTime begintime(m_roomsalebegindate.GetYear(),m_roomsalebegindate.GetMonth(),m_roomsalebegindate.GetDay());
+			CTime begintime(m_roomsalebegindate.GetYear(),m_roomsalebegindate.GetMonth(),m_roomsalebegindate.GetDay(), 0, 0, 0);
 			//构造时间对象
-			CTime endtime(m_roomsaleenddate.GetYear(),m_roomsaleenddate.GetMonth(),m_roomsaleenddate.GetDay());
+			CTime endtime(m_roomsaleenddate.GetYear(),m_roomsaleenddate.GetMonth(),m_roomsaleenddate.GetDay(), 0, 0, 0);
 
-			if((outtime<endtime)&&(outtime>begintime))
+			if((outtime<=endtime)&&(outtime>begintime))
 			{   //满足条件的数据被读取，并在列表框内显示
 				showinList(i);
 				i++;//移动记录集指针到下一条记录

@@ -43,4 +43,5 @@ public:
 	afx_msg void OnMenuadduser();
 	afx_msg void OnMenusalereport();
 	afx_msg void OnBnClickedBtndaysummery();
+    afx_msg void OnBnClickedBtnalert();
 };

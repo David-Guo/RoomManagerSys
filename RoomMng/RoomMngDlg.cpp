@@ -89,6 +89,7 @@ BEGIN_MESSAGE_MAP(CRoomMngDlg, CDialogEx)
 	ON_COMMAND(ID_MENU_adduser, &CRoomMngDlg::OnMenuadduser)
 	ON_COMMAND(ID_MENU_salereport, &CRoomMngDlg::OnMenusalereport)
 	ON_BN_CLICKED(IDC_BTN_daysummery, &CRoomMngDlg::OnBnClickedBtndaysummery)
+    ON_BN_CLICKED(IDC_BTN_alert, &CRoomMngDlg::OnBnClickedBtnalert)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -282,4 +283,11 @@ void CRoomMngDlg::OnBnClickedBtndaysummery()
 {
 	// TODO: Add your control notification handler code here
 	OnMenusalereport();
+}
+
+
+void CRoomMngDlg::OnBnClickedBtnalert()
+{
+    // TODO: Add your control notification handler code here
+    OnMenufindroom();
 }
