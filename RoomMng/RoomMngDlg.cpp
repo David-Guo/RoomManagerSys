@@ -97,10 +97,10 @@ END_MESSAGE_MAP()
 
 BOOL CRoomMngDlg::OnInitDialog()
 {
-	//LoginDlg dlg;
+	LoginDlg dlg;
 
-	//if(IDOK==dlg.DoModal())
-	//{
+	if(IDOK==dlg.DoModal())
+	{
 	CDialogEx::OnInitDialog();
 	// Add "About..." menu item to system menu.
 
@@ -130,7 +130,7 @@ BOOL CRoomMngDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
-	//}
+	}
 	//else 
 	//	exit(0);
 }
